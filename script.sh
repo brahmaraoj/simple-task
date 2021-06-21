@@ -1,26 +1,26 @@
 #!/bin/sh
 
-total=0
+flag=0
 
-for i in `git ls-files`; do
-  for j in `git ls-files -m` ; do
-     if [ $i == $j -o $i == $0 -o $i == "README.md" ]
+for files in `git ls-files`; do
+  for modfiles in `git ls-files -m` ; do
+     if [ $files == $modfiles -o $files == $0 -o $files == "README.md" ]
      then	
 #	echo "matched strings are $i $j "
-	total=1
+	flag=1
 #	echo "total $total"
 	break;
      fi
   done	
-if [ $total == 0 ]
+if [ $flag == 0 ]
 then
-  echo "if you want to compile $i"
+  echo "if you want to compile $files"
   echo "say y or n"
   read what
   if [ $what == "y" -o $what == "Y" ]
   then
-   `gcc $i -o bin-$i` 
+   `gcc $files -o bin-$files` 
   fi
 fi
-total=0	
+flag=0	
 done
