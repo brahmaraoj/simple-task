@@ -3,5 +3,9 @@
 int main()
 {
 printf("hello world okok\n");
+printf("hello world okok\n");
+printf("hello world okok\n");
+printf("hello world okok\n");
+printf("hello world okok\n");
 return 0;
 }
